@@ -3,7 +3,7 @@
 ![Static Badge](https://img.shields.io/badge/JAVA-orange)
 
 # Introdução
-O projeto presente neste repositório trata-se de uma aplicação para manipulação de dados com collections e serviços com base no dataset "AI Depndency, Career Anxiety and Student Burnout", extraído da plataforma Kaggle, criado para fins avaliativos da disciplina de Tópicos Avançados em Banco de Dados, pertencente ao curso de Bacharelado em Engenharia de Software da Universidade Católica do Salvador, Salvador-BA.
+O projeto presente neste repositório trata-se de uma aplicação para manipulação de dados com collections e serviços com base no dataset "[AI Depndency, Career Anxiety and Student Burnout](https://www.kaggle.com/datasets/sridipbasu/ai-depndency-career-anxiety-and-student-burnout)", extraído da plataforma Kaggle, criado para fins avaliativos da disciplina de Tópicos Avançados em Banco de Dados, pertencente ao curso de Bacharelado em Engenharia de Software da Universidade Católica do Salvador, Salvador-BA.
 
 # Etapas do projeto
 
@@ -36,11 +36,10 @@ Criamos métodos/serviços de pesquisa utilizando diferentes parâmetros para lo
 - Controle de relacionamento entre collections para garantir integridade dos dados; e
 - Os dados são validados para que não sejam permitidas inserções com dados inválidos.
 
-
 # Tecnologias utilizadas
 ## IDE's
-Visual Studio
-Eclipse
+- Visual Studio
+- Eclipse
 ## Linguagem
 Java
 
