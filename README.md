@@ -26,13 +26,10 @@ O projeto presente neste repositório trata-se de uma aplicação para manipula�
 <div id='etapas1'/>
  
 ## Etapa 1: Estrutura das Collections
-Selecionamos o dataset "AI Depndency, Career Anxiety and Student Burnout" no site Kaggle e importamos seus dados em 6 (seis) collections, sendo elas: 
-  - student_id
-  - age
-  - gender
-  - urban_or_rural
-  - ai_dependency_score
-  - burnout_score
+Selecionamos o dataset "AI Depndency, Career Anxiety and Student Burnout" no site Kaggle e importamos seus dados nas seguintes collections: 
+  - AiDependency;
+  - Burnout; e
+  - Student.
 
  <div id='etapas2'/>
   
