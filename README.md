@@ -2,17 +2,20 @@
 
 ![Static Badge](https://img.shields.io/badge/JAVA-orange)
 
-# 🔍 Índice 
+<details>
+  <summary><b>🔍 Índice</b></summary>
+  <br>
 
 * [Introdução](#introducao)
 * [Etapas do Projeto](#etapas-do-projeto)
-  * [Etapa 1: Estrutura das Collections](#etapa1)
-  * [Etapa 2: Importação de Dados](#etapa2)
-  * [Etapa 3: Operações de CRUD](#etapa3)
-  * [Etapa 4: Pesquisas](#etapa4)
+    * [Etapa 1: Estrutura das Collections](#etapa1)
+    * [Etapa 2: Importação de Dados](#etapa2)
+    * [Etapa 3: Operações de CRUD](#etapa3)
+    * [Etapa 4: Pesquisas](#etapa4)
 * [Requisitos Gerais](#requisitos)
 * [Tecnologias Utilizadas](#tecnologias-utilizadas)
 * [Autores](#autores)
+</details>
 
 <div id='introducao'/>
 
