@@ -1,7 +1,6 @@
 # Manipulação de Dados com Collections e Serviços
 
 ![Static Badge](https://img.shields.io/badge/JAVA-orange)
-![GitHub repo size](https://img.shields.io/github/repo-size/luiza-00/academic-burnout-analytics)
 
 # Introdução
 O projeto presente neste repositório trata-se de uma aplicação para manipulação de dados com collections e serviços com base no dataset "AI Depndency, Career Anxiety and Student Burnout", extraído da plataforma Kaggle, criado para fins avaliativos da disciplina de Tópicos Avançados em Banco de Dados, pertencente ao curso de Bacharelado em Engenharia de Software da Universidade Católica do Salvador, Salvador-BA.
