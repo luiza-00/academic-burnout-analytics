@@ -28,7 +28,7 @@ public class ApiConsumer extends Thread {
             );
 
             ProcessBuilder pb = new ProcessBuilder(
-                    "kaggle", "datasets", "download", "-d", this.dataset, "--path",  "../../../../../../../assets/datasets",
+                    "kaggle", "datasets", "download", "-d", this.dataset, "--path",  "projeto_tabd/assets/datasets",
                     "--unzip"
 
             );
