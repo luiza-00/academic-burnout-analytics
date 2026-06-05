@@ -194,12 +194,12 @@ public class Main {
 			dependencyService.deleteScore(excluirID);
 			break;
 			
-		case 05:
+		case 5:
 			System.out.println("LISTA DE DEPENDÊNCIAS:");
 			dependencyService.listDependency();
 			break;
 			
-		case 06:
+		case 6:
 			exibirMenuPrincipal();
 			break;
 			
@@ -273,7 +273,7 @@ public class Main {
 			exibirMenuPrincipal();
 			break;
 			
-		case 06:
+		case 6:
 			exibirMenuPrincipal();
 			break;
 			
