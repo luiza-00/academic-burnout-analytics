@@ -15,7 +15,7 @@ import collections.Metodos;
 public class Main {
 	
     static Scanner resposta = new Scanner(System.in);
-	private static StudentService studentService;
+	private static StudentService studentService = new StudentService();
 	private static AiDependencyService dependencyService = new AiDependencyService();
 	private static BurnoutService burnoutService = new BurnoutService();
 	private static SearchService searchService = new SearchService();
@@ -67,9 +67,10 @@ public class Main {
         }
      }
    }
+    
         private static void menuStudent() {
         	boolean voltar = false;
-            while (!voltar)
+            while (!voltar) {
         System.out.println("--------------------------------------");
         System.out.println("|   | ESTUDANTES                    |");
         System.out.println("| 1 | Cadastrar aluno               |");
@@ -130,11 +131,12 @@ public class Main {
 	            System.out.println("Opção inválida! Tente novamente.");
 			break;
 		}
+            }
 }
         
         private static void menuAiDependency() {
         	boolean voltar = false;
-            while (!voltar)
+            while (!voltar) {
         System.out.println("--------------------------------------");
         System.out.println("|   | DEPENDENCIA DE IA             |");
         System.out.println("| 1 | Cadastrar score dependência   |");
@@ -196,13 +198,13 @@ public class Main {
 	            System.out.println("Opção inválida! Tente novamente.");
 			break;
 		}
-
+            }
      
 		}
         
         private static void menuBurnout() {
         	boolean voltar = false;
-            while (!voltar)
+            while (!voltar) { 
         System.out.println("--------------------------------------");
         System.out.println("|   | BURNOUT                       |");
         System.out.println("| 1 | Cadastrar score burnout       |");
@@ -263,10 +265,11 @@ public class Main {
 	            System.out.println("Opção inválida! Tente novamente.");
 			break;
 		}
+            }
 }
         private static void pesquisaFiltro() {
         	boolean voltar = false;
-            while (!voltar)
+            while (!voltar) {
         System.out.println("---------------------------------------");
         System.out.println("Pressione o enter para ignorar o filtro");
       
@@ -279,27 +282,29 @@ public class Main {
         String genero = generoInput.trim().isEmpty() ? null : generoInput;
 
         System.out.print("Filtrar por Zona - Urban/Rural: ");
-        String zonaInput = resposta.nextLine();
-        String zona = zonaInput.trim().isEmpty() ? null : zonaInput;
+        String areaInput = resposta.nextLine();
+        String area = areaInput.trim().isEmpty() ? null : areaInput;
        
         System.out.print("Minímo Score de Dependência de IA (ou 0 para ignorar): ");
         double inputDependencia = Metodos.lerDouble(resposta);
-        Double minimoDependencia = (inputDependencia == 0.0) ? null : inputDependencia;
+        Double dadosDependencia = (inputDependencia == 0.0) ? null : inputDependencia;
         
         System.out.print("Minímo Score de Burnout (ou 0 para ignorar): ");
         double inputBurnout = Metodos.lerDouble(resposta);
-        Double minimoBurnout = (inputBurnout == 0.0) ? null : inputBurnout;
+        Double dadosBurnout = (inputBurnout == 0.0) ? null : inputBurnout;
         
-	    System.out.println("Combinação de resultados:");
+        System.out.println("Combinação de resultados:");
         List<Student> resultado = searchService.pesquisarAvancado(idade, genero, area, dadosDependencia, dadosBurnout);
         if (resultado.isEmpty()) {
             System.out.println("Nenhum estudante corresponde aos filtros aplicados.");
         } else {
             System.out.println("Estudantes Encontrados (" + resultado.size() + "):");
             for (Student aluno : resultado) {
-                System.out.printf("ID: " + aluno.getStudentId() "| Idade: " + aluno.getAge() "| Gênero: " + aluno.getGender() "| Zona:" + aluno.getUrbanOrRural());
+            System.out.printf("ID: %d | Idade: %d | Gênero: %s | Zona: %s%n", 
+            aluno.getStudentId(), aluno.getAge(), aluno.getGender(), aluno.getUrbanOrRural());
             }
+        } voltar = true;
+            } 
         }
-            }
         }
  
