@@ -290,15 +290,14 @@ public class Main {
         double inputBurnout = Metodos.lerDouble(resposta);
         Double minimoBurnout = (inputBurnout == 0.0) ? null : inputBurnout;
         
-        System.out.println("Combinação de resultados:");
-        List<Student> resultado = searchService.pesquisarAvancado(idade, genero, zona, minimoDependencia, minimoBurnout);
+	    System.out.println("Combinação de resultados:");
+        List<Student> resultado = searchService.pesquisarAvancado(idade, genero, area, dadosDependencia, dadosBurnout);
         if (resultado.isEmpty()) {
             System.out.println("Nenhum estudante corresponde aos filtros aplicados.");
         } else {
             System.out.println("Estudantes Encontrados (" + resultado.size() + "):");
             for (Student aluno : resultado) {
-                System.out.printf("ID: %d | Idade: %d | Gênero: %s | Zona: %s%n", 
-                		aluno.getStudentId(), aluno.getAge(), aluno.getGender(), aluno.getUrbanOrRural());
+                System.out.printf("ID: " + aluno.getStudentId() "| Idade: " + aluno.getAge() "| Gênero: " + aluno.getGender() "| Zona:" + aluno.getUrbanOrRural());
             }
         }
             }
