@@ -3,27 +3,26 @@ package collections;
 	import java.util.Scanner;
 
 	public class Metodos {
-
-	    public static int lerInteiro(Scanner resposta) {
-	        while (!resposta.hasNextInt()) {
-	            System.out.println("Número inválido, digite corretamente.");
-	            resposta.next(); 
+public static int lerInteiro(Scanner resposta) {
+	        while (true) {
+	            try {
+	                // Lê a linha inteira como texto e limpa espaços vazios nas pontas
+	                String linha = resposta.nextLine().trim();
+	                return Integer.parseInt(linha); // Converte o texto em número inteiro
+	            } catch (NumberFormatException e) {
+	                System.out.print("Digite um número inteiro válido: ");
+	            }
 	        }
-	        
-	        int numero = resposta.nextInt();
-	        resposta.nextLine(); 
-	        return numero;
 	    }
 
 	    public static double lerDouble(Scanner resposta) {
-	        while (!resposta.hasNextDouble()) {
-	            System.out.println("Número inválido, digite corretamente.");
-	            resposta.next(); 
-	            
-	        double numero = resposta.nextDouble();
-	        resposta.nextLine();
-	        return numero;
-	    }
-			return 0;
-	    }
+	        while (true) {
+	            try {
+	                String linha = resposta.nextLine().trim();
+	                return Double.parseDouble(linha); // Converte o texto em número decimal
+	            } catch (NumberFormatException e) {
+	                System.out.print("Digite um número inteiro válido: ");
+	            }
+	        }
+		}
 	}
