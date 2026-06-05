@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Metodos {
 	public static int lerInteiro(Scanner resposta) {
 		while (true) {
+			if (!resposta.hasNextLine()) return -1;
 			String linha = resposta.nextLine().trim();
 			if (linha.isEmpty()) {
 				return 0; 
@@ -19,6 +20,7 @@ public class Metodos {
 
 	public static double lerDouble(Scanner resposta) {
 		while (true) {
+			if (!resposta.hasNextLine()) return -1.0;
 			String linha = resposta.nextLine().trim();
 			if (linha.isEmpty()) {
 				return 0.0;

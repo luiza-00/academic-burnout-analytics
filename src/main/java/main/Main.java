@@ -8,6 +8,8 @@ import collections.Burnout;
 import collections.Student;
 import services.AiDependencyService;
 import services.BurnoutService;
+import services.CsvImportService;
+import services.DatasetDownloadService;
 import services.SearchService;
 import services.StudentService;
 import collections.Metodos;
@@ -34,7 +36,9 @@ public class Main {
             System.out.println("| 2 | Dependência de IA             |");
             System.out.println("| 3 | Índices de Burnout            |");
             System.out.println("| 4 | Pesquisa em filtros           |");
-            System.out.println("| 5 | Finalizar análise             |");
+            System.out.println("| 5 | Baixar dataset do Kaggle      |");
+            System.out.println("| 6 | Importar CSV para o banco     |");
+            System.out.println("| 7 | Finalizar análise             |");
             System.out.println("--------------------------------------");
             
             int opcao = Metodos.lerInteiro(resposta);
@@ -57,8 +61,15 @@ public class Main {
                 break;
                 
             case 5:
+                baixarDataset();
+                break;
+                
+            case 6:
+                importarCsv();
+                break;
+                
+            case 7:
                 System.out.println("Finalizando a análise!");
-
                 break;
             default:
                 System.out.println("Opção inválida! Tente novamente.");
@@ -66,6 +77,27 @@ public class Main {
 
             }
          }
+
+        private static void baixarDataset() {
+            DatasetDownloadService downloadThread = new DatasetDownloadService(
+                    "sridipbasu/ai-depndency-career-anxiety-and-student-burnout");
+            downloadThread.start();
+            System.out.println("Download do dataset iniciado em segundo plano.");
+            exibirMenuPrincipal();
+        }
+
+        private static void importarCsv() {
+            System.out.print("Nome do arquivo CSV (em projeto_tabd/assets/datasets/): ");
+            String fileName = resposta.nextLine().trim();
+            if (fileName.isEmpty()) {
+                System.out.println("Nome de arquivo invalido.");
+            } else {
+                CsvImportService importThread = new CsvImportService(fileName);
+                importThread.start();
+                System.out.println("Importacao iniciada em segundo plano.");
+            }
+            exibirMenuPrincipal();
+        }
     
         private static void menuStudent() {
         System.out.println("--------------------------------------");
