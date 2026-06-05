@@ -21,56 +21,53 @@ public class Main {
 	private static SearchService searchService = new SearchService();
 
     public static void main(String[] args) {
-
-        boolean analisando = true;
         
         System.out.println("Análise: AI Depndency, Career Anxiety and Student Burnout");
-        
-     while(analisando) {
-        System.out.println("--------------------------------------");
-        System.out.println("|   | MENU PRINCIPAL                |");
-        System.out.println("| 1 | Alunos                        |");
-        System.out.println("| 2 | Dependência de IA             |");
-        System.out.println("| 3 | Índices de Burnout            |");
-        System.out.println("| 4 | Pesquisa em filtros           |");
-        System.out.println("| 5 | Finalizar análise             |");
-        System.out.println("--------------------------------------");
-        
-        int opcao = Metodos.lerInteiro(resposta);
-        
-        switch (opcao) {
-		case 1:
-            menuStudent();
-            break;
+        exibirMenuPrincipal();
+    }
+    
+        public static void exibirMenuPrincipal(){
+        	   
+            System.out.println("--------------------------------------");
+            System.out.println("|   | MENU PRINCIPAL                |");
+            System.out.println("| 1 | Alunos                        |");
+            System.out.println("| 2 | Dependência de IA             |");
+            System.out.println("| 3 | Índices de Burnout            |");
+            System.out.println("| 4 | Pesquisa em filtros           |");
+            System.out.println("| 5 | Finalizar análise             |");
+            System.out.println("--------------------------------------");
             
-        case 2:
-            menuAiDependency();
-            break;
+            int opcao = Metodos.lerInteiro(resposta);
             
-        case 3:
-            menuBurnout();
-            break;
-            
-        case 4:
-        	pesquisaFiltro();
-            break;
-            
-        case 5:
-            System.out.println("Finalizando a análise!");
-            analisando = false;
-            break;
-        default:
-            System.out.println("Opção inválida! Tente novamente.");
-			break;
+            switch (opcao) {
+    		case 1:
+                menuStudent();
+                break;
+                
+            case 2:
+                menuAiDependency();
+                break;
+                
+            case 3:
+                menuBurnout();
+                break;
+                
+            case 4:
+            	pesquisaFiltro();
+                break;
+                
+            case 5:
+                System.out.println("Finalizando a análise!");
 
+                break;
+            default:
+                System.out.println("Opção inválida! Tente novamente.");
+    			break;
 
-        }
-     }
-   }
+            }
+         }
     
         private static void menuStudent() {
-        	boolean voltar = false;
-            while (!voltar) {
         System.out.println("--------------------------------------");
         System.out.println("|   | ESTUDANTES                    |");
         System.out.println("| 1 | Cadastrar aluno               |");
@@ -82,28 +79,32 @@ public class Main {
         
         int opcao = Metodos.lerInteiro(resposta);
         switch (opcao) {
-		case 01:
+		case 1:
 		
 		System.out.println("ID do aluno: ");
 		int idAluno = Metodos.lerInteiro(resposta);
 		System.out.println("Idade: ");
 		int idade = Metodos.lerInteiro(resposta);
-		System.out.println("Gênero: ");
-		String genero = resposta.nextLine();
-		System.out.println("Área urbana ou rural: ");
-		String area = resposta.nextLine(); 
+		System.out.print("Gênero: ");
+        String genero = resposta.nextLine();
+        System.out.print("Área urbana ou rural: ");
+        String area = resposta.nextLine(); 
 		
 		Student cadastroAluno = new Student(idAluno, idade, genero, area);
 			studentService.registerStudent(cadastroAluno);
+			
+			System.out.println("Aluno cadastrado.");
+			exibirMenuPrincipal();
         break;
         
-		case 02:
+		case 2:
 		System.out.println("Digite o id do aluno que deseja localizar:");
 		int localizarID = Metodos.lerInteiro(resposta);
 		studentService.findStudent(localizarID);
+			exibirMenuPrincipal();
 		break;
 		
-		case 03:
+		case 3:
 			System.out.println("Digite o id do aluno que deseja alterar:");
 			int idAlteracao = Metodos.lerInteiro(resposta);
 			System.out.println("Idade: ");
@@ -115,16 +116,20 @@ public class Main {
 			
 			Student alteracaoAluno = new Student(idAlteracao, idadeAlteracao, generoAlteracao, areaAlteracao);
 				studentService.updateStudent(alteracaoAluno);
-				break;
+				
+				exibirMenuPrincipal();	
+			break;
 			
-		case 04:
+		case 4:
 			System.out.println("Digite o id do aluno que deseja excluir:");
 			int excluirID = Metodos.lerInteiro(resposta);
 			studentService.deleteStudent(excluirID);
+			
+			exibirMenuPrincipal();	
 			break;
 			
-		case 05:
-			voltar = true;
+		case 5:
+			exibirMenuPrincipal();
 			break;
 			
 		default:
@@ -132,11 +137,9 @@ public class Main {
 			break;
 		}
             }
-}
         
         private static void menuAiDependency() {
-        	boolean voltar = false;
-            while (!voltar) {
+        	
         System.out.println("--------------------------------------");
         System.out.println("|   | DEPENDENCIA DE IA             |");
         System.out.println("| 1 | Cadastrar score dependência   |");
@@ -161,12 +164,16 @@ public class Main {
 			
 			AiDependency cadastroDependencia = new AiDependency(idDependencia, idAluno, score);
 			dependencyService.registerDependency(cadastroDependencia);
+			
+			exibirMenuPrincipal();
 			break;
 			
 		case 2:
 			System.out.println("Digite o id da dependência que deseja localizar:");
 			int localizarID = Metodos.lerInteiro(resposta);
 			dependencyService.findAiScore(localizarID);
+			
+			exibirMenuPrincipal();
 			break;
 			
 		case 3:
@@ -177,6 +184,8 @@ public class Main {
 			
 			AiDependency alteracaoDependencia = new AiDependency(idAlteracao, 0, scoreAlteracao);
 			dependencyService.updateDependency(alteracaoDependencia);
+			
+			exibirMenuPrincipal();
 			break;
 			
 		case 4:
@@ -191,7 +200,7 @@ public class Main {
 			break;
 			
 		case 06:
-			voltar = true;
+			exibirMenuPrincipal();
 			break;
 			
 		default:
@@ -200,11 +209,8 @@ public class Main {
 		}
             }
      
-		}
-        
         private static void menuBurnout() {
-        	boolean voltar = false;
-            while (!voltar) { 
+
         System.out.println("--------------------------------------");
         System.out.println("|   | BURNOUT                       |");
         System.out.println("| 1 | Cadastrar score burnout       |");
@@ -228,12 +234,16 @@ public class Main {
 
             Burnout cadastroBurnout = new Burnout(idBurnout, idAluno, score);
             burnoutService.registerBurnout(cadastroBurnout);
+            
+            exibirMenuPrincipal();
             break;
             
 		case 2:
 			System.out.println("Digite o id do burnout que deseja localizar: ");
 			int localizarID = Metodos.lerInteiro(resposta);
 			burnoutService.findBurnout(localizarID);
+			
+			exibirMenuPrincipal();
 			break;
 			
 		case 3:
@@ -244,21 +254,27 @@ public class Main {
 			
 			Burnout alteracaoDependencia = new Burnout(idAlteracao, 0, scoreAlteracao);
 			burnoutService.updateBurnout(alteracaoDependencia);
+			
+			exibirMenuPrincipal();
 			break;
 			
 		case 4:
 			System.out.println("Digite o id do burnout que deseja excluir:");
 			int excluirID = Metodos.lerInteiro(resposta);
 			burnoutService.deleteBurnout(excluirID);
+			
+			exibirMenuPrincipal();
 			break;
 			
 		case 5:
 			System.out.println("LISTA DE BURNOUTS:");
 			burnoutService.listBurnouts();
+			
+			exibirMenuPrincipal();
 			break;
 			
 		case 06:
-			voltar = true;
+			exibirMenuPrincipal();
 			break;
 			
 		default:
@@ -266,10 +282,8 @@ public class Main {
 			break;
 		}
             }
-}
+
         private static void pesquisaFiltro() {
-        	boolean voltar = false;
-            while (!voltar) {
         System.out.println("---------------------------------------");
         System.out.println("Pressione o enter para ignorar o filtro");
       
@@ -303,8 +317,7 @@ public class Main {
             System.out.printf("ID: %d | Idade: %d | Gênero: %s | Zona: %s%n", 
             aluno.getStudentId(), aluno.getAge(), aluno.getGender(), aluno.getUrbanOrRural());
             }
-        } voltar = true;
+        } exibirMenuPrincipal();
             } 
         }
-        }
- 
+        
