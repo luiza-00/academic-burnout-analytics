@@ -1,10 +1,12 @@
 package com.project.services.tasks;
 
+import java.io.IOException;
+
 import io.github.cdimascio.dotenv.Dotenv;
 
 public class ApiConsumer extends Thread {
 
-        Dotenv dotenv = Dotenv.configure().directory("projeto_tabd/assets").load();
+    Dotenv dotenv = Dotenv.configure().directory("projeto_tabd/assets").load();
 
     String dataset = "";
     private long response;
@@ -37,14 +39,23 @@ public class ApiConsumer extends Thread {
                 pb1.inheritIO();
                 Process process1 = pb1.start();
                 process1.waitFor();
+                process1.destroy();
 
-                pb2.inheritIO();
-                Process process2 = pb2.start();
-                process2.waitFor();
+                try{
+                    pb2.inheritIO();
+                    Process process2 = pb2.start();
+                    process2.waitFor();
+                    process2.destroy();
+                } catch  (IOException | InterruptedException e) {
+                    System.out.println("Diretório já existe, continuando...");
+                }
 
+                
+                
                 pb3.inheritIO();
                 Process process3 = pb3.start();
                 process3.waitFor();
+                process3.destroy();
 
                 pb.inheritIO();
                 Process process = pb.start();
@@ -55,8 +66,8 @@ public class ApiConsumer extends Thread {
                 } else {
                     System.err.println("Erro ao baixar o dataset. Código de saída: " + exitCode);
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
+            } catch (IOException | InterruptedException e) {
+                System.err.println("Erro durante execução: " + e.getMessage());
             }
         
     }
@@ -68,10 +79,6 @@ public class ApiConsumer extends Thread {
 
     @Override
     public void run() {
-        try {
-            fetchDataset();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        fetchDataset();
     }
 }

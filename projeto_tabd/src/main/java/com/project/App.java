@@ -2,10 +2,7 @@ package com.project;
 
 import com.project.services.tasks.ApiConsumer;
 
-/**
- * Hello world!
- *
- */
+
 public class App 
 {
         public static void main(String[] args) {
@@ -19,8 +16,8 @@ public class App
             apiConsumer2.join();
         
         } catch (InterruptedException e) {
-            e.printStackTrace();
-
+            Thread.currentThread().interrupt();
+            System.err.println("Thread interrompida: " + e.getMessage());
         }
         
         System.out.println("Response2: " + apiConsumer2.getResponse());
