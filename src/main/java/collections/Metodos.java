@@ -3,7 +3,7 @@ package collections;
 	import java.util.Scanner;
 
 	public class Metodos {
-public static int lerInteiro(Scanner resposta) {
+		public static int lerInteiro(Scanner resposta) {
 	        while (true) {
 	            try {
 	                // Lê a linha inteira como texto e limpa espaços vazios nas pontas
